@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify
 from random import *
+from flask_cors import CORS
 import os
 
 static_folder = os.path.join(os.path.abspath(os.path.dirname(os.getcwd())) + "\\dist\\static")
@@ -7,6 +8,7 @@ template_folder = os.path.join(os.path.abspath(os.path.dirname(os.getcwd())) + "
 app = Flask(__name__,
             static_folder=static_folder,
             template_folder=template_folder)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 @app.route('/')

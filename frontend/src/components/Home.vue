@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -21,6 +22,17 @@ export default {
     },
     getRandom () {
       this.randomNumber = this.getRandomInt(1, 100)
+      // this.randomNumber = this.getRandomFromBackend()
+    },
+    getRandomFromBackend () {
+      const path = `http://localhost:5000/api/random`
+      axios.get(path)
+        .then(response => {
+          this.randomNumber = response.data.randomNumber
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   },
   created () {
