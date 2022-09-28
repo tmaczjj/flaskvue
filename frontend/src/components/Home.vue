@@ -21,8 +21,8 @@ export default {
       return Math.floor(Math.random() * (max - min + 1)) + min
     },
     getRandom () {
-      this.randomNumber = this.getRandomInt(1, 100)
-      // this.randomNumber = this.getRandomFromBackend()
+      // this.randomNumber = this.getRandomInt(1, 100)
+      this.randomNumber = this.getRandomFromBackend()
     },
     getRandomFromBackend () {
       const path = `http://localhost:5000/api/random`
